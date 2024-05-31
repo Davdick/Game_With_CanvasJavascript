@@ -1,3 +1,3 @@
 # Game_With_CanvasJavascript
 
-I had make this project for my sister.
+I had made this project for my sister.

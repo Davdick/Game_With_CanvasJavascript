@@ -2,7 +2,7 @@ const canvas = document.getElementById("idcanvas");
 const ctx = canvas.getContext("2d");
 
 canvas.width = window.innerWidth;
-canvas.height = window.innerHeight;
+canvas.height = window.innerHeight * .9;
 
 let score = 0;
 let gameRunning = true;
@@ -149,6 +149,17 @@ function init() {
         if (event.key === 'ArrowLeft') player.moveLeft();
         if (event.key === ' ') player.shootBullet();
     });
+    document.getElementById('btn-left').addEventListener('click', () => {
+        player.moveLeft();
+    });
+
+    document.getElementById('btn-shoot').addEventListener('click', () => {
+        player.shootBullet();
+    });
+
+    document.getElementById('btn-right').addEventListener('click', () => {
+        player.moveRight();
+    });
 
     gameRunning = true;
     requestAnimationFrame(updateGame);
@@ -227,8 +238,8 @@ function isInside(pos, rect) {
 var rect = {
     x: canvas.width / 2 - 100,
     y: canvas.height / 2 - 50,
-    width: 200,
-    height: 100
+    width: 300,
+    height: 160
 };
 
 canvas.addEventListener('click', function (evt) {
@@ -248,9 +259,13 @@ function Playbutton(rect) {
     ctx.strokeStyle = '#000000';
     ctx.stroke();
     ctx.closePath();
-    ctx.font = '40pt Kremlin Pro Web';
+    ctx.font = '20pt Kremlin Pro Web';
     ctx.fillStyle = '#000000';
-    ctx.fillText('Jugar', rect.x + rect.width / 4, rect.y + 64);
+    //ctx.fillText(' Jugar', rect.x + rect.width / 4, rect.y + 64);
+    ctx.fillText('DA CLICK PARA JUGAR', rect.x + rect.width / 2, rect.y + 30);
+    ctx.fillText('(puedes moverte', rect.x + rect.width / 2, rect.y + 60);
+    ctx.fillText('con las flechas del', rect.x + rect.width / 2, rect.y + 90);
+    ctx.fillText('teclado o con los botones)', rect.x + rect.width / 2, rect.y + 120);
 }
 
 function hideButton() {
